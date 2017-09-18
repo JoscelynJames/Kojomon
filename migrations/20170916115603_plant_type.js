@@ -6,6 +6,7 @@ exports.up = function(knex, Promise) {
     table.text('evo_1')
     table.text('evo_2')
     table.text('evo_3')
+    table.text('evo_4')
   })
 };
 
