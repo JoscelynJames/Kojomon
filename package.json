@@ -19,9 +19,12 @@
   "homepage": "https://github.com/JoscelynJames/Kojomon#readme",
   "dependencies": {
     "body-parser": "^1.18.1",
+    "connect-ensure-login": "^0.1.1",
     "cors": "^2.8.4",
     "express": "^4.15.4",
     "knex": "^0.13.0",
+    "passport": "^0.4.0",
+    "passport-auth0": "^0.6.0",
     "pg": "^7.3.0"
   }
 }
