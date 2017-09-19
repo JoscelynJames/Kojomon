@@ -18,16 +18,16 @@ router.get('/:id', function (req, res) {
   return
   })
 
-  router.put('/:id', function (req, res){
-    var playerId = req.params.id
-    return knex('player').where('id', playerId).update({
-      last_login: new Date()
-    })
-    .then(function(player){
-      res.send('Success')
-    })
-    return
+router.put('/:id', function (req, res){
+  var playerId = req.params.id
+  return knex('player').where('id', playerId).update({
+    last_login: new Date()
   })
+  .then(function(player){
+    res.send('Success')
+  })
+  return
+})
 
 
 module.exports = router

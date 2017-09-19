@@ -50,14 +50,21 @@ function updateUser(user) {
       console.log('player not found', player);
       return knex('player')
         .insert(user)
-        .then((x) => {
-          console.log('inster results', x);
-        })
+        //if user does no exist
+          // .then((x) => {
+          //   redirect to play.html
+          //   display how to & new kojomon info
+          // })
     }
     console.log('player found', JSON.parse(JSON.stringify(player)));
     return knex('player')
       .where('email', user.email)
       .update({last_login: user.last_login})
+      //if user already exist
+      // .then((b) => {
+      //   redirect to the firebase play.html
+      //   display pet.id where player.id = player_id & where active = true
+      // })
   })
 }
 
