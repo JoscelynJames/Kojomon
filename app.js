@@ -15,7 +15,6 @@ const Auth0Strategy = require('passport-auth0');
 const assets = require('./assets.js');
 const morgan = require('morgan');
 const user = require('./routes/user.js');
-const session = require('express-session');
 const PORT = process.env.PORT || 3000;
 
 const strategy = new Auth0Strategy(
