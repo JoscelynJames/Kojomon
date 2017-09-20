@@ -17,7 +17,8 @@ router.get(
     scope: 'openid profile email'
   }),
   function(req, res) {
-    res.redirect('/');
+    console.log("/login mayber?");
+    // res.redirect('/');
   }
 );
 
