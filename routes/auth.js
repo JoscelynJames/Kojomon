@@ -41,20 +41,14 @@ router.get('/logout', (req, res) => {
 router.get('/callback', passport.authenticate('auth0', {
      failureRedirect: '/'
    }),
-   function(req, res, next) {
-    //  if (req.user.emails.length < 1) {
-    //    console.log('Emails:', req.user.emails);
-    //    next(new Error('No emails found!'));
-    //  }
-    //  var user = {
-    //    last_login: req.user._json.updated_at,
-    //    email: req.user.emails[0].value,
-    //    name: req.user.name.givenName
-    //  };
-    //  updateUser(user);
-    //  console.log(user);
-      console.log("callback get function", req.user);
-      res.send(req.user);
+   function(req, res) {
+     var user = {
+       last_login: req.user._json.updated_at,
+       email: req.user.emails[0].value,
+       name: req.user.name.givenName
+     };
+     updateUser(user);
+     res.send(user);
    }
  );
 
