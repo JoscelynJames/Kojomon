@@ -10,20 +10,59 @@ const food = require('./routes/food.js');
 const hygiene = require('./routes/hygiene.js');
 const plant_type = require('./routes/plant_type.js');
 const player = require('./routes/player.js');
+<<<<<<< HEAD
 
 const PORT = process.env.PORT || 3000
+=======
+const auth = require('./routes/auth.js');
+const passport = require('passport');
+const Auth0Strategy = require('passport-auth0');
+const assets = require('./assets.js');
+const morgan = require('morgan');
+const user = require('./routes/user.js');
+const session = require('express-session');
+const PORT = process.env.PORT || 3000;
+>>>>>>> 528e553ffdcefe34df6ba19357e66e0ec8be1d07
 
-app.use(bodyparser.json())
-app.use(bodyparser.urlencoded())
-app.use(cors())
-app.use('/api/v1/pet', pet)
-app.use('/api/v1/attention', attention)
-app.use('/api/v1/badge', badge)
-app.use('/api/v1/food', food)
-app.use('/api/v1/hygiene', hygiene)
-app.use('/api/v1/plant_type', plant_type)
-app.use('/api/v1/player', player)
+const strategy = new Auth0Strategy(
+  {
+    domain: assets.domain,
+    clientID: assets.clientID,
+    clientSecret: assets.clientSecret,
+    callbackURL: assets.callbackURL
+  },
+  (accessToken, refreshToken, extraParams, profile, done) => {
+    return done(null, profile);
+  }
+);
 
+passport.use(strategy);
+
+passport.serializeUser(function(user, done) {
+  done(null, user);
+});
+
+passport.deserializeUser(function(user, done) {
+  done(null, user);
+});
+
+app.use(morgan('tiny'));
+app.use(bodyparser.json());
+app.use(bodyparser.urlencoded());
+app.use(passport.initialize());
+app.use(passport.session());
+app.use(cors());
+
+//routes
+app.use('/api/v1/pet', pet);
+app.use('/api/v1/attention', attention);
+app.use('/api/v1/badge', badge);
+app.use('/api/v1/food', food);
+app.use('/api/v1/hygiene', hygiene);
+app.use('/api/v1/plant_type', plant_type);
+app.use('/api/v1/player', player);
+app.use('/', auth);
+app.use('/user', user);
 
 
 
@@ -45,7 +84,8 @@ app.use(function(err, req, res, next) {
 
   // render the error page
   res.status(err.status || 500);
-  res.render('error');
+  res.json(err.message);
+  console.error(err);
 });
 
 app.listen(PORT, () => console.log(`listening on port ${PORT}`))

@@ -6,7 +6,7 @@ const router = express.Router();
 router.get('/:id', function (req, res) {
   var petId = req.params.id
   return knex('pet').where('id', petId)
-  .then(function(){
+  .then(function(pet){
     res.send(pet);
   })
   return
@@ -45,6 +45,8 @@ router.get('/:id', function (req, res) {
     })
     return
   })
+
+
 
 //this may or may not work
   router.put('/active/:id', function (req, res){
