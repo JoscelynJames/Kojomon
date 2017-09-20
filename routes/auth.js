@@ -2,7 +2,7 @@ const express = require('express');
 const passport = require('passport');
 // const ensureLoggedIn = require('connect-ensure-login').ensureLoggedIn('/login');
 const request = require('request');
-const knex = require('../knex/knex.js')
+const knex = require('../knex/knex.js');
 require('dotenv').config();
 const router = express.Router();
 
@@ -17,7 +17,6 @@ router.get('/login', passport.authenticate('auth0', {
     scope: 'openid profile email'
   }),
   function(req, res) {
-    console.log(req.user);
     res.redirect('/');
   }
 );
@@ -34,12 +33,6 @@ router.get('/logout', (req, res) => {
 //     failureRedirect: '/'
 //   }), // ensureLoggedIn,
 //   function(req, res) {
-//     var user = {
-//       last_login: req.user._json.updated_at,
-//       email: req.user.emails[0].value,
-//       name: req.user.name.givenName
-//     };
-//     updateUser(user);
 //     res.redirect('https://kojomon-ae289.firebaseapp.com/home.html');
 //   }
 // );
