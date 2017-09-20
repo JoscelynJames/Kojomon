@@ -15,7 +15,10 @@ const Auth0Strategy = require('passport-auth0');
 const assets = require('./assets.js');
 const morgan = require('morgan');
 const user = require('./routes/user.js');
+const session = require('express-session');
+// const ensureLoggedIn = require('connect-ensure-login').ensureLoggedIn('/login');
 const PORT = process.env.PORT || 3000;
+require('dotenv').config();
 
 const strategy = new Auth0Strategy(
   {
@@ -46,7 +49,7 @@ app.use(passport.initialize());
 app.use(passport.session());
 app.use(cors());
 
-//routes
+//routes -- ADD 'ensureLoggedIn' AFTER TESTING THE DATABASE
 app.use('/api/v1/pet', pet);
 app.use('/api/v1/attention', attention);
 app.use('/api/v1/badge', badge);
@@ -56,6 +59,7 @@ app.use('/api/v1/plant_type', plant_type);
 app.use('/api/v1/player', player);
 app.use('/', auth);
 app.use('/user', user);
+
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
@@ -72,7 +76,7 @@ app.use(function(err, req, res, next) {
 
   // render the error page
   res.status(err.status || 500);
-  res.json(err.message);
+  res.json(err);
   console.error(err);
 });
 
