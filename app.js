@@ -16,7 +16,7 @@ const assets = require('./assets.js');
 const morgan = require('morgan');
 const user = require('./routes/user.js');
 const session = require('express-session');
-const ensureLoggedIn = require('connect-ensure-login').ensureLoggedIn();
+const ensureLoggedIn = require('connect-ensure-login').ensureLoggedIn('/login');
 const PORT = process.env.PORT || 3000;
 
 
@@ -50,13 +50,13 @@ app.use(passport.session());
 app.use(cors());
 
 //routes
-app.use('/api/v1/pet', ensureLoggedIn('/login'), pet);
-app.use('/api/v1/attention',ensureLoggedIn('/login'), attention);
-app.use('/api/v1/badge', ensureLoggedIn('/login'), badge);
-app.use('/api/v1/food', ensureLoggedIn('/login'),food);
-app.use('/api/v1/hygiene', ensureLoggedIn('/login'), hygiene);
-app.use('/api/v1/plant_type', ensureLoggedIn('/login'), plant_type);
-app.use('/api/v1/player', ensureLoggedIn('/login'), player);
+app.use('/api/v1/pet', ensureLoggedIn, pet);
+app.use('/api/v1/attention',ensureLoggedIn, attention);
+app.use('/api/v1/badge', ensureLoggedIn, badge);
+app.use('/api/v1/food', ensureLoggedIn,food);
+app.use('/api/v1/hygiene', ensureLoggedIn, hygiene);
+app.use('/api/v1/plant_type', ensureLoggedIn, plant_type);
+app.use('/api/v1/player', ensureLoggedIn, player);
 app.use('/', auth);
 app.use('/user', user);
 
