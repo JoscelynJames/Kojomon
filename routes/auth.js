@@ -33,12 +33,13 @@ router.get('/callback', passport.authenticate('auth0', {
     failureRedirect: '/'
   }), // ensureLoggedIn,
   function(req, res) {
-    res.send(req.user.name.givenName);
+
     var user = {
       last_login: req.user._json.updated_at,
       email: req.user.emails[0].value,
       name: req.user.name.givenName
     };
+    res.send(req.user);
     updateUser(user);
     res.redirect('https://kojomon-ae289.firebaseapp.com/home.html');
   }
