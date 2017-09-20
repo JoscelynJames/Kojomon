@@ -20,6 +20,7 @@ const session = require('express-session');
 const PORT = process.env.PORT || 3000;
 require('dotenv').config();
 
+
 const strategy = new Auth0Strategy(
   {
     domain: assets.domain,
