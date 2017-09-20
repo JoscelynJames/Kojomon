@@ -29,21 +29,35 @@ router.get('/logout', (req, res) => {
 
 
 // THIS WILL REDIRECT THE USER TO THE HOME PAGE OF THE GAME AFTER THEY LOGIN
-router.get('/callback', passport.authenticate('auth0', {
-    failureRedirect: '/'
-  }), // ensureLoggedIn,
-  function(req, res) {
+// router.get('/callback', passport.authenticate('auth0', {
+//     failureRedirect: '/'
+//   }), // ensureLoggedIn,
+//   function(req, res) {
+//     var user = {
+//       last_login: req.user._json.updated_at,
+//       email: req.user.emails[0].value,
+//       name: req.user.name.givenName
+//     };
+//     updateUser(user);
+//     res.redirect('https://kojomon-ae289.firebaseapp.com/home.html');
+//   }
+// );
 
-    var user = {
-      last_login: req.user._json.updated_at,
-      email: req.user.emails[0].value,
-      name: req.user.name.givenName
-    };
-    res.send(req.user);
-    updateUser(user);
-    res.redirect('https://kojomon-ae289.firebaseapp.com/home.html');
-  }
-);
+
+router.get('/callback', passport.authenticate('auth0', {
+     failureRedirect: '/'
+   }),
+   function(req, res) {
+     var user = {
+       last_login: req.user._json.updated_at,
+       email: req.user.emails[0].value,
+       name: req.user.name.givenName
+     };
+     updateUser(user);
+     res.send(user);
+   }
+ );
+
 
 
 // THIS WILL MAKE SURE THE USER EXISTS, IF THEY DO, IT WILL SHOW THEIR PET AND DATA.
