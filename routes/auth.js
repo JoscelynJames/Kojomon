@@ -47,7 +47,11 @@ router.get('/logout', (req, res) => {
 router.get('/callback', passport.authenticate('auth0', {
      failureRedirect: '/'
    }),
-   function(req, res) {
+   function(req, res, next) {
+     if (req.user.emails.length < 1) {
+       console.log('Emails:', req.user.emails);
+       next(new Error('No emails found!'));
+     }
      var user = {
        last_login: req.user._json.updated_at,
        email: req.user.emails[0].value,
