@@ -18,6 +18,7 @@ const user = require('./routes/user.js');
 const session = require('express-session');
 const PORT = process.env.PORT || 3000;
 
+
 const strategy = new Auth0Strategy(
   {
     domain: assets.domain,
@@ -57,6 +58,11 @@ app.use('/api/v1/plant_type', plant_type);
 app.use('/api/v1/player', player);
 app.use('/', auth);
 app.use('/user', user);
+
+
+
+
+
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
