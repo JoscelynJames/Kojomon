@@ -2,7 +2,6 @@ const express = require('express');
 const app = express();
 const bodyparser = require('body-parser');
 const cors = require('cors');
-
 const pet = require('./routes/pet.js');
 const attention = require('./routes/attention.js');
 const badge = require('./routes/badge.js');
@@ -10,10 +9,6 @@ const food = require('./routes/food.js');
 const hygiene = require('./routes/hygiene.js');
 const plant_type = require('./routes/plant_type.js');
 const player = require('./routes/player.js');
-<<<<<<< HEAD
-
-const PORT = process.env.PORT || 3000
-=======
 const auth = require('./routes/auth.js');
 const passport = require('passport');
 const Auth0Strategy = require('passport-auth0');
@@ -22,7 +17,7 @@ const morgan = require('morgan');
 const user = require('./routes/user.js');
 const session = require('express-session');
 const PORT = process.env.PORT || 3000;
->>>>>>> 528e553ffdcefe34df6ba19357e66e0ec8be1d07
+
 
 const strategy = new Auth0Strategy(
   {
