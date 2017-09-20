@@ -81,4 +81,4 @@ app.use(function(err, req, res, next) {
   console.error(err);
 });
 
-app.listen(PORT, () => console.log(`listening on port ${PORT}`))
+app.listen(PORT, () => console.log(`listening on port ${PORT}`));
