@@ -59,6 +59,7 @@ router.get('/callback', passport.authenticate('auth0', {
     //  };
     //  updateUser(user);
     //  console.log(user);
+    console.log("callback get function");
      res.send(req.user);
    }
  );
