@@ -6,8 +6,6 @@ const knex = require('../knex/knex.js')
 require('dotenv').config();
 const router = express.Router();
 
-
-
 router.get('/login', passport.authenticate('auth0', {
     clientID: process.env.AUTH0_CLIENT_ID,
     domain: process.env.AUTH0_DOMAIN,
@@ -29,10 +27,9 @@ router.get('/logout', (req, res) => {
 
 
 
-router.get('/callback', passport.authenticate('auth0', { failureRedirect: '/'}), ensureLoggedIn('/login'),
+router.get('/callback', passport.authenticate('auth0', { failureRedirect: '/'}),
   function(req, res) {
-    res.redirect('https://kojomon-ae289.firebaseapp.com/home.html')
-    // res.send(req.user)
+    res.redirect('https://kojomon-ae289.firebaseapp.com/home.html');
   }
 );
 

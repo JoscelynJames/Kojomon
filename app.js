@@ -16,6 +16,7 @@ const assets = require('./assets.js');
 const morgan = require('morgan');
 const user = require('./routes/user.js');
 const session = require('express-session');
+const ensureLoggedIn = require('connect-ensure-login').ensureLoggedIn();
 const PORT = process.env.PORT || 3000;
 
 
