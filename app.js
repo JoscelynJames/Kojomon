@@ -2,6 +2,7 @@ const express = require('express');
 const app = express();
 const bodyparser = require('body-parser');
 const cors = require('cors');
+
 const pet = require('./routes/pet.js');
 const attention = require('./routes/attention.js');
 const badge = require('./routes/badge.js');
@@ -9,6 +10,7 @@ const food = require('./routes/food.js');
 const hygiene = require('./routes/hygiene.js');
 const plant_type = require('./routes/plant_type.js');
 const player = require('./routes/player.js');
+
 const PORT = process.env.PORT || 3000
 
 app.use(bodyparser.json())
@@ -21,6 +23,11 @@ app.use('/api/v1/food', food)
 app.use('/api/v1/hygiene', hygiene)
 app.use('/api/v1/plant_type', plant_type)
 app.use('/api/v1/player', player)
+
+
+
+
+
 
 
 // catch 404 and forward to error handler
