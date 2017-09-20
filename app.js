@@ -49,13 +49,13 @@ app.use(passport.session());
 app.use(cors());
 
 //routes
-app.use('/api/v1/pet', pet);
-app.use('/api/v1/attention', attention);
-app.use('/api/v1/badge', badge);
-app.use('/api/v1/food', food);
-app.use('/api/v1/hygiene', hygiene);
-app.use('/api/v1/plant_type', plant_type);
-app.use('/api/v1/player', player);
+app.use('/api/v1/pet', ensureLoggedIn('/login'), pet);
+app.use('/api/v1/attention',ensureLoggedIn('/login'), attention);
+app.use('/api/v1/badge', ensureLoggedIn('/login'), badge);
+app.use('/api/v1/food', ensureLoggedIn('/login'),food);
+app.use('/api/v1/hygiene', ensureLoggedIn('/login'), hygiene);
+app.use('/api/v1/plant_type', ensureLoggedIn('/login'), plant_type);
+app.use('/api/v1/player', ensureLoggedIn('/login'), player);
 app.use('/', auth);
 app.use('/user', user);
 
