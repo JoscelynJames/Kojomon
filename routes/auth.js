@@ -5,6 +5,7 @@ const request = require('request');
 const knex = require('../knex/knex.js');
 require('dotenv').config();
 const router = express.Router();
+const user = require('./user')
 
 
 // THIS PULLS UP THE AUTH0 LOGIN PAGE
