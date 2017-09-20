@@ -50,7 +50,7 @@ app.use(passport.session());
 app.use(cors());
 
 //routes -- ADD 'ensureLoggedIn' AFTER TESTING THE DATABASE
-app.use('/api/v1/pet', pet); 
+app.use('/api/v1/pet', pet);
 app.use('/api/v1/attention', attention);
 app.use('/api/v1/badge', badge);
 app.use('/api/v1/food', food);
@@ -80,7 +80,7 @@ app.use(function(err, req, res, next) {
 
   // render the error page
   res.status(err.status || 500);
-  res.json(err.message);
+  res.json(err);
   console.error(err);
 });
 
