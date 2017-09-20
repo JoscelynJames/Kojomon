@@ -62,7 +62,7 @@ router.get('/callback', passport.authenticate('auth0', {
     //    name: req.user.name.givenName
     //  };
     //  updateUser(user);
-     res.send(req.user.name);
+     res.send(req.user);
    }
  );
 
