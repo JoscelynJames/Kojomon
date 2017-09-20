@@ -66,7 +66,7 @@ app.use('/user', user);
 app.use(function(req, res, next) {
   const err = new Error('Not Found');
   err.status = 404;
-  next(err);
+  res.send('NOT FOUND');
 });
 
 // error handler
