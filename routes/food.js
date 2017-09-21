@@ -3,8 +3,8 @@ const knex = require('../knex/knex.js');
 const router = express.Router();
 
 router.get('/:id', function (req, res) {
-  var foodId = req.params.id
-  return knex('food').where('id', foodId)
+  var petId = req.params.id
+  return knex('food').where('pet_id', petId)
   .then(function(food){
     res.send(food);
   })
@@ -12,8 +12,8 @@ router.get('/:id', function (req, res) {
   })
 
   router.put('/:id', function (req, res){
-    var foodId = req.params.id
-    return knex('food').where('id', foodId).update({
+    var petId = req.params.id
+    return knex('food').where('pet_id', petId).update({
       last_interaction: new Date()
     })
     .then(function(food){
