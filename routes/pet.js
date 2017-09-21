@@ -15,9 +15,7 @@ router.get('/:id', function (req, res) {
 //THIS ROUTE MIGHT NEED TO BE ADJUSTED DEPENDING ON VALUE
   router.put('/evo/:id', function (req, res){
     var petId = req.params.id
-    return knex('pet').where('id', petId).update({
-      evo_score: req.body.score
-    })
+    return knex('pet').where('id', petId).update(req.body)
     .then(function(pet){
       res.send("Success")
     })
