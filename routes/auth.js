@@ -68,6 +68,28 @@ router.get('/callback', passport.authenticate('auth0', {
  );
 
 
+ var options = { method: 'POST',
+   url: 'https://app77287715.auth0.com/oauth/token',
+   headers: { 'content-type': 'application/json' },
+   body:
+    { grant_type: 'authorization_code',
+      client_id: '5MLBuhvrYRNgq8s29jsL4jmWFzfEDchS',
+      client_secret: 'gAVU9PvPsACmcvRuvXIc7YK1RcOg-YKvl_NEhw7wHm8V5oup-Rrael7OIsO_K3_M',
+      code: 'YOUR_AUTHORIZATION_CODE',
+      redirect_uri: 'https://*.herokuapp.com/callback' },
+   json: true };
+
+ request(options, function (error, response, body) {
+   if (error) throw new Error(error);
+
+   console.log(body);
+ });
+
+
+
+
+
+
 // THIS WILL MAKE SURE THE USER EXISTS, IF THEY DO, IT WILL SHOW THEIR PET AND DATA.
 // IF THEY DONT EXIST, IT WILL SHOW THEM A NEW GAME
 function updateUser(user) {
