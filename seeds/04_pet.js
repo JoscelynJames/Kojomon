@@ -19,6 +19,7 @@ exports.seed = function(knex, Promise) {
         active: true,
         creation_date: new Date(),
         plant_type_id: 2
+
       },{
         id: 3,
         player_id: 2,
@@ -26,7 +27,8 @@ exports.seed = function(knex, Promise) {
         evo_score: 88,
         active: true,
         creation_date: new Date(),
-        plant_type_id: 3
+        plant_type_id: 2
+
       },{
         id: 4,
         player_id: 3,
@@ -43,6 +45,7 @@ exports.seed = function(knex, Promise) {
         active: true,
         creation_date: new Date(),
         plant_type_id: 5
+
       },{
         id: 6,
         player_id: 4,
@@ -51,6 +54,8 @@ exports.seed = function(knex, Promise) {
         active: true,
         creation_date: new Date(),
         plant_type_id: 2
+
+
       },
 
     ]);

@@ -20,6 +20,7 @@ const session = require('express-session');
 const PORT = process.env.PORT || 3000;
 require('dotenv').config();
 
+
 const strategy = new Auth0Strategy(
   {
     domain: assets.domain,
@@ -65,7 +66,7 @@ app.use('/user', user);
 app.use(function(req, res, next) {
   const err = new Error('Not Found');
   err.status = 404;
-  next(err);
+  res.send('NOT FOUND');
 });
 
 // error handler
@@ -80,4 +81,4 @@ app.use(function(err, req, res, next) {
   console.error(err);
 });
 
-app.listen(PORT, () => console.log(`listening on port ${PORT}`))
+app.listen(PORT, () => console.log(`listening on port ${PORT}`));

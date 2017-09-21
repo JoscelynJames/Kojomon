@@ -5,6 +5,7 @@ const request = require('request');
 const knex = require('../knex/knex.js');
 require('dotenv').config();
 const router = express.Router();
+const user = require('./user')
 
 
 // THIS PULLS UP THE AUTH0 LOGIN PAGE
@@ -27,6 +28,20 @@ router.get('/logout', (req, res) => {
   res.redirect('/');
 });
 
+// router.get('/callback', passport.authenticate('auth0', { failureRedirect: '/'}),
+//   function(req, res) {
+//     // var user = {
+//     //   last_login: req.user._json.updated_at,
+//     //   email: req.user.emails[0].value,
+//     //   name: req.user.name.givenName
+//     // };
+//     // updateUser(user);
+//     // res.send(user);
+//
+//     res.redirect('https://kojomon-ae289.firebaseapp.com/home.html')
+//     // res.send(req.user)
+//   }
+// );
 
 // THIS WILL REDIRECT THE USER TO THE HOME PAGE OF THE GAME AFTER THEY LOGIN
 // router.get('/callback', passport.authenticate('auth0', {
@@ -41,23 +56,16 @@ router.get('/logout', (req, res) => {
 router.get('/callback', passport.authenticate('auth0', {
      failureRedirect: '/'
    }),
-   function(req, res, next) {
-    //  if (req.user.emails.length < 1) {
-    //    console.log('Emails:', req.user.emails);
-    //    next(new Error('No emails found!'));
-    //  }
+   function(req, res) {
     //  var user = {
     //    last_login: req.user._json.updated_at,
     //    email: req.user.emails[0].value,
     //    name: req.user.name.givenName
     //  };
     //  updateUser(user);
-    //  console.log(user);
-      console.log("callback get function", req.user);
-      res.send(req.user);
+     res.send(req.user);
    }
  );
-
 
 
 // THIS WILL MAKE SURE THE USER EXISTS, IF THEY DO, IT WILL SHOW THEIR PET AND DATA.
