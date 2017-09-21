@@ -53,19 +53,19 @@ router.get('/logout', (req, res) => {
 // );
 
 
-router.get('/callback', passport.authenticate('auth0', {
-     failureRedirect: '/'
-   }),
-   function(req, res) {
-    //  var user = {
-    //    last_login: req.user._json.updated_at,
-    //    email: req.user.emails[0].value,
-    //    name: req.user.name.givenName
-    //  };
-    //  updateUser(user);
-     res.send(req.user);
-   }
- );
+// router.get('/callback', passport.authenticate('auth0', {
+//      failureRedirect: '/'
+//    }),
+//    function(req, res) {
+//     //  var user = {
+//     //    last_login: req.user._json.updated_at,
+//     //    email: req.user.emails[0].value,
+//     //    name: req.user.name.givenName
+//     //  };
+//     //  updateUser(user);
+//      res.send(req.user);
+//    }
+//  );
 
 
  var options = { method: 'POST',
