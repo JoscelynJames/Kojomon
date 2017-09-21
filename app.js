@@ -17,8 +17,8 @@ const morgan = require('morgan');
 const user = require('./routes/user.js');
 const session = require('express-session');
 // const ensureLoggedIn = require('connect-ensure-login').ensureLoggedIn('/login');
-require('dotenv').config();
 const PORT = process.env.PORT || 3000;
+require('dotenv').config();
 
 
 const strategy = new Auth0Strategy(
