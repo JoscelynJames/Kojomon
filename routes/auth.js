@@ -53,6 +53,8 @@ router.get('/logout', (req, res) => {
 // );
 
 
+
+
 router.get('/callback', passport.authenticate('auth0', {
      failureRedirect: '/'
    }),
@@ -66,6 +68,8 @@ router.get('/callback', passport.authenticate('auth0', {
      res.send(req.user);
    }
  );
+
+
 
 
 // THIS WILL MAKE SURE THE USER EXISTS, IF THEY DO, IT WILL SHOW THEIR PET AND DATA.
